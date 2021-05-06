@@ -6,8 +6,7 @@ class DailyMailer < ApplicationMailer
   #   en.daily_mailer.daily_notification.subject
   #
   def daily_notification
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+    default to: -> {user.pluck(:email) }
+    mail(subject: "Daily Mail")
   end
 end
